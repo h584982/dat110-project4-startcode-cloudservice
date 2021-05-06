@@ -21,6 +21,10 @@ public class AccessLog {
 		
 		int id = 0;
 		
+		id = cid.getAndIncrement();
+		
+		log.put(id, new AccessEntry(id, message));
+		
 		return id;
 	}
 		
