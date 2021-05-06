@@ -19,9 +19,7 @@ public class AccessLog {
 	// TODO: add an access entry to the log for the provided message and return assigned id
 	public int add(String message) {
 		
-		int id = 0;
-		
-		id = cid.getAndIncrement();
+		int id = cid.getAndIncrement();
 		
 		log.put(id, new AccessEntry(id, message));
 		
@@ -31,7 +29,7 @@ public class AccessLog {
 	// TODO: retrieve a specific access entry from the log
 	public AccessEntry get(int id) {
 		
-		return null;
+		return log.get(id);
 		
 	}
 	
