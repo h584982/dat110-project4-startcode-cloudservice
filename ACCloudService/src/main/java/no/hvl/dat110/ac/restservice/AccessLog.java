@@ -42,7 +42,7 @@ public class AccessLog {
 	public String toJson () {
 		Gson gson = new Gson();
 		
-		String json = gson.toJson(log);
+		String json = gson.toJson(log.values());
     	
     	return json;
     }

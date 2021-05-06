@@ -51,7 +51,7 @@ public class App {
 		// TODO: implement the routes required for the access control service
 		// as per the HTTP/REST operations describined in the project description
 		
-		post("/accessdevice/log", (req, res) -> {
+		post("/accessdevice/log/", (req, res) -> {
 		 	Gson gson = new Gson();
 	
 			AccessMessage state_message = gson.fromJson(req.body(), AccessMessage.class);
@@ -62,11 +62,11 @@ public class App {
 		 	return gson.toJson(message_entry);
 		});
 		
-		get("/accessdevice/log", (req, res) -> {
+		get("/accessdevice/log/", (req, res) -> {
 			
 		 	Gson gson = new Gson();
 		 	
-		 	return gson.toJson(accesslog.toJson());
+		 	return accesslog.toJson();
 		});
 		
 		
@@ -85,12 +85,12 @@ public class App {
 			Gson gson = new Gson();
 			AccessCode new_access_code = gson.fromJson(req.body(), AccessCode.class);
 			accesscode.setAccesscode(new_access_code.getAccesscode());
-			return gson.toJson(accesscode.getAccesscode());
+			return gson.toJson(accesscode);
 		});
 		
 		get("/accessdevice/code", (req, res) -> {
 			Gson gson = new Gson();
-			return gson.toJson(accesscode.getAccesscode());
+			return gson.toJson(accesscode);
 		});
 		
 		delete("/accessdevice/log/", (req, res) -> {
