@@ -62,6 +62,13 @@ public class App {
 		 	return gson.toJson(message_entry);
 		});
 		
+		get("/accessdevice/log", (req, res) -> {
+			
+		 	Gson gson = new Gson();
+		 	
+		 	return gson.toJson(accesslog.toJson());
+		});
+		
     }
     
 }
