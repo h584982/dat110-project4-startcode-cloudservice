@@ -54,8 +54,8 @@ public class App {
 		post("/accessdevice/log", (req, res) -> {
 		 	Gson gson = new Gson();
 	
-			AccessMessage json_state_message = gson.fromJson(req.body(), AccessMessage.class);
-			String state = json_state_message.getMessage();
+			AccessMessage state_message = gson.fromJson(req.body(), AccessMessage.class);
+			String state = state_message.getMessage();
 			Integer access_id = accesslog.add(state);
 			AccessEntry message_entry = new AccessEntry(access_id, state);
 		 	
@@ -79,9 +79,13 @@ public class App {
 			} catch (NumberFormatException exception){
 				return "id error";
 			}
-		 
-		 	
-		 	
+		});
+		
+		put("/accessdevice/code", (req, res) -> {
+			Gson gson = new Gson();
+			AccessCode new_access_code = gson.fromJson(req.body(), AccessCode.class);
+			accesscode.setAccesscode(new_access_code.getAccesscode());
+			return gson.toJson(accesscode.getAccesscode());
 		});
 		
     }
