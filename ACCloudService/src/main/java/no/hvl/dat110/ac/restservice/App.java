@@ -88,6 +88,11 @@ public class App {
 			return gson.toJson(accesscode.getAccesscode());
 		});
 		
+		get("/accessdevice/code", (req, res) -> {
+			Gson gson = new Gson();
+			return gson.toJson(accesscode.getAccesscode());
+		});
+		
     }
     
 }
