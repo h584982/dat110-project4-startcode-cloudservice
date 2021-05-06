@@ -40,8 +40,9 @@ public class AccessLog {
 	
 	// TODO: return JSON representation of the access log
 	public String toJson () {
-    	
-		String json = null;
+		Gson gson = new Gson();
+		
+		String json = gson.toJson(log);
     	
     	return json;
     }
