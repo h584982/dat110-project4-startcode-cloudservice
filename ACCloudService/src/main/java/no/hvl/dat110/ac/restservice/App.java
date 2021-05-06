@@ -69,6 +69,21 @@ public class App {
 		 	return gson.toJson(accesslog.toJson());
 		});
 		
+		
+		get("/accessdevice/log/:id", (req, res) -> {
+			Gson gson = new Gson();
+			
+			try{
+				Integer id = Integer.parseInt(req.params(":id"));
+				return gson.toJson(accesslog.get(id));
+			} catch (NumberFormatException exception){
+				return "id error";
+			}
+		 
+		 	
+		 	
+		});
+		
     }
     
 }
