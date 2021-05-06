@@ -4,6 +4,10 @@ import static spark.Spark.after;
 import static spark.Spark.get;
 import static spark.Spark.port;
 import static spark.Spark.put;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import static spark.Spark.post;
 import static spark.Spark.delete;
 
@@ -43,8 +47,20 @@ public class App {
 		 	return gson.toJson("IoT Access Control Device");
 		});
 		
+		
 		// TODO: implement the routes required for the access control service
 		// as per the HTTP/REST operations describined in the project description
+		
+		post("/accessdevice/log", (req, res) -> {
+		 	Gson gson = new Gson();
+	
+			AccessMessage json_state_message = gson.fromJson(req.body(), AccessMessage.class);
+			String state = json_state_message.getMessage();
+			Integer access_id = accesslog.add(state);
+			AccessEntry message_entry = new AccessEntry(access_id, state);
+		 	
+		 	return gson.toJson(message_entry);
+		});
 		
     }
     
