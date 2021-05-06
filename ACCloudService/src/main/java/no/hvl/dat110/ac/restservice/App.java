@@ -93,6 +93,14 @@ public class App {
 			return gson.toJson(accesscode.getAccesscode());
 		});
 		
+		delete("/accessdevice/log/", (req, res) -> {
+			accesslog.clear();
+			
+			return accesslog.toJson();
+		});
+		
+		
+		
     }
     
 }
